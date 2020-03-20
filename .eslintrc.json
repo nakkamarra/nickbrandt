@@ -11,7 +11,6 @@
   "extends": [
     "airbnb",
     "airbnb/hooks",
-    "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
@@ -26,6 +25,10 @@
     "import"
   ],
   "rules": {
+    "eol-last": [
+      "error",
+      "never"
+    ],
     "import/no-default-export": "error",
     "import/prefer-default-export": "off",
     "import/extensions": [
@@ -68,5 +71,5 @@
         ]
       }
     }
-  },
+  }
 }
