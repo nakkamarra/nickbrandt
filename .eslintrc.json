@@ -39,12 +39,8 @@
       "error",
       "always"
     ],
-    "react/jsx-closing-bracket-location": [
-      1,
-      "after-props"
-    ],
     "react/jsx-filename-extension": [
-      1,
+      "warn",
       {
         "extensions": [
           ".js",
@@ -54,7 +50,7 @@
       }
     ],
     "react/jsx-max-depth": [
-      1,
+      "warn",
       {
         "max": 3
       }
