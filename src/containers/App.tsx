@@ -2,6 +2,7 @@ import React from 'react';
 import { GlobalFonts } from '../styles/fonts/fonts';
 import { StyledHeading } from '../ui/Heading';
 import { StyledParagraph } from '../ui/Paragraph';
+import { Social } from '../components/Social';
 
 export const App: React.FC = () => (
   <>
@@ -29,5 +30,6 @@ export const App: React.FC = () => (
       coloring book master cleanse aesthetic. Chia trust fund lo-fi,
       lomo pour-over waistcoat thundercats meggings roof party leggings.
     </StyledParagraph>
+    <Social />
   </>
 );
