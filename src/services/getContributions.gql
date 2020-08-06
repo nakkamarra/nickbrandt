@@ -1,0 +1,51 @@
+query getContributions($login: String!) {
+  user(login: $login) {
+    id
+    avatarUrl
+    login
+    url
+    activity: contributionsCollection {
+      commits: commitContributionsByRepository {
+        contributions(first: 100) {
+          commits: nodes {
+            count: commitCount
+            date: occurredAt
+            url
+          }
+        }
+        repository {
+          nameWithOwner
+          url
+          updatedAt
+          isPrivate
+        }
+      }
+      pullRequests: pullRequestContributionsByRepository{
+        contributions(first: 100) {
+          requests: nodes {
+            date: occurredAt
+          }
+        }
+        repository {
+          nameWithOwner
+          url
+          updatedAt
+          isPrivate
+        }
+      }
+      pullRequestReviews: pullRequestReviewContributionsByRepository{
+        contributions(first: 100) {
+          reviews: nodes {
+            date: occurredAt
+          }
+        }
+        repository {
+          nameWithOwner
+          url
+          updatedAt
+          isPrivate
+        }
+      }
+    }
+  }
+}

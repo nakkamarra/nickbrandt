@@ -1,11 +1,15 @@
 import React from 'react';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { GlobalFonts } from '../styles/fonts/fonts';
 import { StyledHeading } from '../ui/Heading';
 import { StyledParagraph } from '../ui/Paragraph';
-import { Social } from '../components/Social';
+import { Tech } from './Tech';
+import { Social } from './Social';
+import { githubClient } from '../services/GithubClient';
+import { GitHub } from './GitHub';
 
 export const App: React.FC = () => (
-  <>
+  <ApolloProvider client={githubClient}>
     <GlobalFonts />
     <StyledHeading>
       Nick Brandt
@@ -30,6 +34,8 @@ export const App: React.FC = () => (
       coloring book master cleanse aesthetic. Chia trust fund lo-fi,
       lomo pour-over waistcoat thundercats meggings roof party leggings.
     </StyledParagraph>
+    <Tech />
     <Social />
-  </>
+    <GitHub />
+  </ApolloProvider>
 );

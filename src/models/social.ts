@@ -16,7 +16,7 @@ export interface SocialIconMeta {
  */
 export type SocialIconType = 'linkedin' | 'twitter' | 'medium' | 'github';
 
-export const LinkedInMeta: SocialIconMeta = {
+const LinkedInMeta: SocialIconMeta = {
   href: 'https://linkedin.com/in/nicholasgeorgebrandt',
   title: 'LinkedIn',
   description: 'Visit Nick\'s LinkedIn profile',
@@ -24,7 +24,7 @@ export const LinkedInMeta: SocialIconMeta = {
   fill: '#0072b1',
 };
 
-export const TwitterMeta: SocialIconMeta = {
+const TwitterMeta: SocialIconMeta = {
   href: 'https://twitter.com/nakkamarra',
   title: 'Twitter',
   description: 'Visit Nick\'s Twitter profile',
@@ -32,7 +32,7 @@ export const TwitterMeta: SocialIconMeta = {
   fill: '#1da0f2',
 };
 
-export const MediumMeta: SocialIconMeta = {
+const MediumMeta: SocialIconMeta = {
   href: 'https://medium.com/@nickbrandt64',
   title: 'Medium',
   description: 'Visit Nick\'s Medium blog',
@@ -40,10 +40,17 @@ export const MediumMeta: SocialIconMeta = {
   fill: '#03a87c',
 };
 
-export const GitHubMeta: SocialIconMeta = {
+const GitHubMeta: SocialIconMeta = {
   href: 'https://github.com/nakkamarra',
   title: 'GitHub',
   description: 'Visit Nick\'s GitHub profile',
   type: 'github',
   fill: '#000000',
 };
+
+export const SocialMetadata = [
+  LinkedInMeta,
+  TwitterMeta,
+  MediumMeta,
+  GitHubMeta,
+];
