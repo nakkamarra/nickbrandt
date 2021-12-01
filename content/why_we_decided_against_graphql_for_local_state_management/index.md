@@ -2,6 +2,10 @@
 title="why we decided against graphql for local state management"
 description="an article about graphql and state management, orginally posted on the OkCupid tech blog"
 date=2020-08-20
+
+[taxonomies]
+tags = ["react", "graphql", "redux"]
+categories = ["software"]
 +++
 # Why we decided against GraphQL for local state management
 

@@ -2,6 +2,10 @@
 title="internationalizing and localizing your app, part 1: understanding different cultures"
 description="first part of an article about internationalization, orginally posted on the OkCupid tech blog"
 date=2021-07-16
+
+[taxonomies]
+tags = ["i18n"]
+categories = ["software"]
 +++
 # Internationalizing and Localizing Your App, Part 1: Understanding Different Cultures
 
@@ -21,7 +25,7 @@ And in English (*note*, *we would not capitalize nouns this way in English*):
 
 Seeing a message in German that *does not* follow this rule could be jarring for users who understand this language, as it is technically incorrect grammar to have incorrect capitalization. It’s important to understand the assumption we make by using capitalization for emphatics, because the case is part of the orthography of many languages, and there are even languages without the notion of uppercase and lowercase glyphs. How will your message be interpreted if it does not change the case? This is just one of the many features of a language that are subject to change when translating / localizing from English to other languages.
 
-Alongside that, there are still other more complex language features to solve for, such as [**plural and ordinal rules](http://cldr.unicode.org/index/cldr-spec/plural-rules)** or [**grammatical gender](https://en.wikipedia.org/wiki/Grammatical_gender)**. Our assumptions based on how these features apply to English cause many to overlook the fact that these need to be handled at some point in our software. I’ll go into more depth about these in a later section, but getting these correct is crucial to ensuring a message is clear, grammatically correct, and retains its original intention.
+Alongside that, there are still other more complex language features to solve for, such as **[plural and ordinal rules](http://cldr.unicode.org/index/cldr-spec/plural-rules)** or **[grammatical gender](https://en.wikipedia.org/wiki/Grammatical_gender)**. Our assumptions based on how these features apply to English cause many to overlook the fact that these need to be handled at some point in our software. I’ll go into more depth about these in a later section, but getting these correct is crucial to ensuring a message is clear, grammatically correct, and retains its original intention.
 
 Along with the linguistic assumptions we make, we also make **stylistic assumptions**. Consider an error message being displayed on your site when something goes wrong: *what color will it be?* Most westerners would probably answer red, as the color is often culturally associated with negatives (danger, stoplights, a negative balance). However, in Chinese culture for example, red is associated with positives like happiness and prosperity. A great example of this difference is demonstrated by the contrasting choice of colors in stock markets: Western financial markets use green to signify increase and red to denote decrease, whereas Eastern financial markets will do the exact opposite.
 

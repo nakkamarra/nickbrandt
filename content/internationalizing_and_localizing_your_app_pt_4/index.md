@@ -2,6 +2,10 @@
 title="internationalizing and localizing your app, part 4: maintainability and scalability"
 description="fourth and final part of an article about internationalization, orginally posted on the OkCupid tech blog"
 date=2021-07-19
+
+[taxonomies]
+tags = ["i18n"]
+categories = ["software"]
 +++
 # Internationalizing and Localizing Your App, Part 4: Maintainability and Scalability
 

@@ -2,6 +2,10 @@
 title="internationalizing and localizing your app, part 3: technical challenges"
 description="third part of an article about internationalization, orginally posted on the OkCupid tech blog"
 date=2021-07-18
+
+[taxonomies]
+tags = ["i18n"]
+categories = ["software"]
 +++
 # Internationalizing and Localizing Your App, Part 3: Technical Challenges
 
@@ -49,17 +53,68 @@ Another consideration thought out by the Unicode Consortium is how to handle pro
 
 Of course, every locale has a unique way of handling the formatting of certain data. The most common example of this, and one which you’ve most likely encountered before, is **currency**. [Each currency uses some specific symbol](https://en.wikipedia.org/wiki/Currency_symbol), such a $ or ₺. On top of that, it is common for currencies to also be formatted differently across regions based on the way in which each region represents numbers. For example, let's use the [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) API to check a few numbers:
 
-<iframe src="https://medium.com/media/b44010ca274d3485a1731c930331bfa4" frameborder=0></iframe>
+```js
+const number = 123456.789;
+
+console.log(new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(number));
+// expected output: "$123,456.79"
+
+// Notice the difference between , and . in the USD example
+console.log(new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(number));
+// expected output: "123.456,79 €"
+
+// the Japanese yen doesn't use a minor unit
+console.log(new Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" }).format(number));
+// expected output: "￥123,457"
+```
 
 Of course, this applies to more than just currencies, but also to things like **percentages**, which are used all over OkCupid to denote the match percentage between two users. Here’s an example of how percentages are localized:
 
-<iframe src="https://medium.com/media/1017ab7ae69a88397a2f05a825deb461" frameborder=0></iframe>
+```js
+// Percentages operate between 0.0 and 1.0 in this API.
+const number = 0.95;
+
+console.log(new Intl.NumberFormat("en-US", { style: "percentage" }).format(number));
+// expected output: "95%"
+
+console.log(new Intl.NumberFormat("de", { style: "percentage" }).format(number));
+// expected output: "95 %"
+
+console.log(new Intl.NumberFormat("tr", { style: "percentage" }).format(number));
+// expected output: "%95"
+```
 
 These APIs are incredible powerful and are part of most recent browsers (and natively in recent Node versions). They also provide ways to format numbers for things such as using different digit sets for some locales, localizing distances / speeds / metric measurements, and much more.
 
 There are other things that we should also make certain to properly localize within our applications, such as dates, times, relative times, and even lists:
 
-<iframe src="https://medium.com/media/5fc508e7ee2d0c6c6d9d9db39e5948a2" frameborder=0></iframe>
+```js
+const date = new Date();
+
+console.log(new Intl.DateTimeFormat("en-US").format(date));
+// expected output: "4/19/2021"
+
+console.log(new Intl.DateTimeFormat("tr").format(date));
+// expected output: "19.04.2021"
+
+
+
+console.log(new Intl.RelativeTimeFormat("en-US", { style: "long" }).format(-1, "day"));
+// expected output: "1 day ago"
+
+console.log(new Intl.RelativeTimeFormat("tr", { style: "long" }).format(-1, "day"));
+// expected output: "dün"
+
+
+
+const toppings = ["Cheese", "Pepperoni", "Veggies"];
+
+console.log(new Intl.ListFormat("en-US", { style: "long", type: "conjunction" }).format(toppings));
+// expected output: "Cheese, Pepperoni, and Veggies"
+
+console.log(new Intl.ListFormat("de", { style: "long", type: "disjunction" }).format(toppings));
+// expected output: "Cheese, Pepperoni oder Veggies"
+```
 
 It’s also worth mentioning that another thing that is often overlooked when localizing values like this is that the notion of “sorting alphabetically” will change given the language in use, as the glyphs in use in a given language will change and a simple .sort(...) will certainly not take locale into consideration by default. Luckily, the CLDR has us covered once again by [providing rules for collating](http://cldr.unicode.org/index/cldr-spec/collation-guidelines) so that sorting may be localized as well. The Intl APIs also expose a Collator for this purpose.
 
@@ -104,7 +159,18 @@ Finally, it’s worth taking a moment to analyze the architecture of your curren
 
 Like I had mentioned earlier, **capitalization** is a very important syntactical feature of some languages. For that reason, I feel it is best to avoid using code like CSS text-transforms or Javascript's String.toUpperCase to perform explicit changes to the case of a message that will be displayed to a user. You can almost be guaranteed that this will inadvertently corrupt the translation of a message at some point. Let's look at an example here, where for example, we want to capitalize the name of a user and their location:
 
-<iframe src="https://medium.com/media/5b2c99b4c8959fb34d0d02312414d09d" frameborder=0></iframe>
+```js
+const user = "Nick";
+const city = "Cincinnatti";
+
+// EN-US
+console.log(user.toLocaleUpperCase('en-US')); // "NICK"
+console.log(city.toLocaleUpperCase('en-US')); // "CINCINNATTI"
+
+// TR
+console.log(user.toLocaleUpperCase('tr')); // "NİCK"
+console.log(city.toLocaleUpperCase('tr')); // "CİNCİNNATTİ"
+```
 
 Well, now we’ve just actually mistranslated two messages in Turkish, as my name is not NİCK and the name of the city is not CİNCİNATTİ, regardless of the fact that the glyph i should become İ when uppercased in Turkish.
 
@@ -112,7 +178,27 @@ Another important piece to keep in mind when it comes to the styling of our soft
 
 Along with designing for different expected lengths of our content, we should also keep in mind that our components should be built in a way in which they are able to be used in a variety of languages’ scripts, regardless of the particular **direction** of the selected script. Take this contrived CSS as an example:
 
-<iframe src="https://medium.com/media/f9b06fd75b34786473d8e1c51edff53e" frameborder=0></iframe>
+```css
+/* Left and right values will always be the same */
+.bad-page-title {
+	margin: 16px 32px 16px 4px;
+}
+
+.bad-page-subtitle {
+	margin-left: 16px;
+	margin-right: 24px;  
+}
+
+
+/* document.dir changes will automatically lay this out properly */
+.good-page-title {
+	margin-inline-start: 16px;
+}
+
+.good-page-subtitle {
+	margin-block-end: 32px;
+}
+```
 
 Carefully using start and end values as opposed to left and right values will allow our stylesheets to scale effortlessly across languages with **left-to-right** scripts and **right-to-left** scripts! Neat!
 
