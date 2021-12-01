@@ -2,8 +2,8 @@
 base_url = "https://nickbrandt.dev"
 
 # Used in RSS by default
-title = "My blog!"
-description = "placeholder description text for your blog!"
+title = "nick brandt | software engineer"
+description = "My personal blog and site, Nick Brandt's personal site and blog, where various topics (of mostly software) are poorly discussed."
 
 # The default language, used in RSS
 # TODO: I would love to support more languages and make this easy to handle
@@ -20,7 +20,7 @@ generate_feed = true
 # Theme name to use.
 # NOTE: should not need to mess with this if you are using zerm directly, i.e. cloning the
 # repository at root and not using as directed by the Zola docs via themes/ directory.
-# theme = ""
+theme = "zerm"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -44,8 +44,6 @@ taxonomies = [
            {name = "categories"},
 ]
 
-theme = "zerm"
-
 [extra]
 # Put all your custom variables here
 #
@@ -53,7 +51,7 @@ theme = "zerm"
 # ---------------------------------------------------------
 
 # Author name to be added to posts, if enabled.
-author = "you!"
+author = "nick brandt"
 
 # Show author's name in blog post meta data.
 show_author = false
@@ -66,7 +64,7 @@ show_tags = true
 
 # Theme color. You can have any color you want, so long as it's...
 # ["orange", "blue", "red", "green", "pink"]
-theme_color = "orange"
+theme_color = "green"
 
 # Custom css to style over the defaults. This is useful when you only have a
 # few small tweaks to make rather than a major rehaul to the theme.
@@ -76,7 +74,7 @@ theme_color = "orange"
 
 # How many menu items to show on desktop. if you set this to 0, only submenu
 # button will be visible.
-show_menu_items = 2
+show_menu_items = 3
 
 # set theme to full screen width.
 full_width = false
@@ -85,18 +83,17 @@ full_width = false
 center = false
 
 # set a custom favicon. Must be placed in root of static/ directory...
-# favicon = ""
-
+favicon = "favicon.ico"
 
 # Set a custom preview image for your website when posted as a link.
 # Must be placed in root of static/ directory...
 # og_preview_img = ""
 
 # Copyright notice if desired. Defaults to
-# copyright = "copyright notice here"
+copyright = "copyright © 20XX nick brandt"
 
 # What is displayed in the top left corner of the website. Default is zerm.
-logo_text = "zerm"
+logo_text = "> nickbrandt"
 
 # Link in logo. Default returns you to $BASE_URL.
 logo_home_link = "/"
@@ -104,13 +101,13 @@ logo_home_link = "/"
 # Menu items to display. You define a url and the name of the menu item.
 # NOTE: `$BASE_URL/` must be included in the url name.
 main_menu = [
+              {url="/", name="feed"},
               {url="/about/", name="about"},
               {url="/contact/", name="contact"},
-              {url="https://google.com", name="Google", external=true},
 ]
 
 # Displayed as title of drop-down menu when size of main_menu > show_menu_items.
-menu_more = "show more"
+menu_more = "menu"
 
 # Displayed after teaser text for a blog post.
 read_more = "read more"
@@ -118,7 +115,6 @@ read_more = "read more"
 # not currently used from previous theme, but leaving here for now in case I
 # feel like adding it.
 read_other_posts = "read other posts"
-
 
 # Enable math typesetting with KaTeX
 # Show math in pages with `math=true` in the TOML frontmatter
