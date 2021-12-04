@@ -6,7 +6,7 @@ path = "about"
 date = 2019-03-21
 +++
 
-Hey, greetings, my name is Nick Brandt. I am a:
+Hello, my name is Nick Brandt. I am a:
 
 - software engineer (5+ years of industry experience)
 - NYC native
@@ -14,4 +14,4 @@ Hey, greetings, my name is Nick Brandt. I am a:
 - true crime cognoscente
 - lover of all things nerdy (i.e video games, sci-fi, etc.)
 
-In my free time, I enjoy making cocktails, longboarding, collecting (instruments, TCG, cool bottles of booze), playing board games, and contributing to open source repos for things that interest me (check out my GitHub if this is something you're curious about).
+In my free time, I enjoy making cocktails, longboarding, collecting (instruments, TCG, cool bottles of booze), playing video and board games, and contributing to open source repos for things that interest me (check out my GitHub if this is something you're curious about).
