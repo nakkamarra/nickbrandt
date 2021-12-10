@@ -17,11 +17,6 @@ generate_feed = true
 # link type of 'application/rss+xml'.
 # feed_filename = "atom.xml"
 
-# Theme name to use.
-# NOTE: should not need to mess with this if you are using zerm directly, i.e. cloning the
-# repository at root and not using as directed by the Zola docs via themes/ directory.
-theme = "zerm"
-
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
