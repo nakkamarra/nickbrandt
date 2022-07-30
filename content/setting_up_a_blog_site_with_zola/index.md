@@ -46,6 +46,6 @@ Here's a rip from the Zola docs comparing it to some other similar solutions (wh
 
 ## How I set up this site with Zola
 
-Aside from simply installing the `zola` tool by following the docs, I just initialized a new zola project and installed a theme from the catalog of themes on the zola site. From there, I took some of my blog posts (which I also tend to write in markdown anyway), and pulled those documents in as content in the project. Viola! Some tweaking in the `config.toml` aside, I tested by serving locally and everything was looking good so it was time to set up an integration and deployment via Github Actions.
+Aside from simply installing the `zola` tool by following the docs, I just initialized a new zola project and installed a theme from the catalog of themes on the zola site. From there, I took some of my blog posts (which I also tend to write in markdown anyway), and pulled those documents in as content in the project. Viola! Some tweaking in the `config.toml` aside, I tested by serving locally and everything was looking good so it was time to set up an integration with Netlify.
 
-I chose Github Actions so that changes made to my repository could all be built and deploy as new versions of the site, all from within Github (making management a breeze on my end). 
+Configuring Zola with Netlify couldn't be simpler. You add a `netlify.toml` configuration file dictating a few values for your site's setup, and then add the Netlify integration to the repository in question and point the Netlify site to that repo. Previews are then generated on pull request into the repository's main branch, and deploys are automatically kicked off when changes are merged into the main branch. 
