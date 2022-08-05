@@ -69,7 +69,7 @@ theme_color = "orange"
 
 # How many menu items to show on desktop. if you set this to 0, only submenu
 # button will be visible.
-show_menu_items = 3
+show_menu_items = 0
 
 # set theme to full screen width.
 full_width = false
@@ -99,6 +99,8 @@ main_menu = [
               {url="/", name="feed"},
               {url="/about/", name="about"},
               {url="/contact/", name="contact"},
+              {url="/tags/", name="tags"},
+              {url="/categories/", name="categories"},
 ]
 
 # Displayed as title of drop-down menu when size of main_menu > show_menu_items.
