@@ -26,7 +26,7 @@ Ignoring the obviously qualms that one ought to have with a system like COMPAS, 
 
 - Just because we are *able* to use software for a traditionally-human task, ***should we***?
 
-It's questions like these that I believe are important for software engineers to ponder, not only in order to find their own answers to such questions, but also so that they keep them in mind during the next seemingly-innocuous discovery phase of a project. The software industry is currently in a particularly interesting place, where most government regulation reagarding software development is still in a very laissez-faire state. However, this means that as engineers, we are the arbiters of not only what can and cannot be done, but more imporantly what *should* and *shouldn't* be done.
+It's questions like these that I believe are important for software engineers to ponder, not only in order to find their own answers to such questions, but also so that they keep them in mind during the next seemingly-innocuous discovery phase of a project. I'm reminded of Uncle Bob's [talk on the future of programming](https://www.youtube.com/watch?v=ecIWPzGEbFc), where he mentions the idea of the dangers of software bugs being harbingers of the possibility of further regulation in the software industry. The software industry is currently in a particularly interesting place, where most government regulation reagarding software development is still in a very laissez-faire state. So it's important to remember that this means that as engineers, we are the arbiters of not only what can and cannot be done, but more imporantly what *should* and *shouldn't* be done.
 
 ## Inspiration and further reading:
 
